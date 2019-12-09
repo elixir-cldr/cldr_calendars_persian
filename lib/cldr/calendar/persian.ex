@@ -185,7 +185,7 @@ defmodule Cldr.Calendar.Persian do
   """
   @spec day_of_week(year, month, day) :: 1..7
   @impl true
-  @epoch_day_of_week 5
+  @epoch_day_of_week 6
   def day_of_week(year, month, day) do
     days = date_to_iso_days(year, month, day)
     days_after_saturday = rem(days, 7)

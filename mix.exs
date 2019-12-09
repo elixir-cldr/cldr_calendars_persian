@@ -23,7 +23,7 @@ defmodule Cldr.Calendars.Persian.MixProject do
 
   def description do
     """
-    Implementation of the Persian calendar for Elixir
+    Implementation of the Persian Solar Hijri calendar for Elixir
     """
   end
 
@@ -54,9 +54,10 @@ defmodule Cldr.Calendars.Persian.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:ex_cldr_calendars, "~> 1.0"},
+      {:ex_cldr_calendars, "~> 1.6"},
       {:astro, "~> 0.3"},
-      {:stream_data, "~> 0.4", only: :test}
+      {:stream_data, "~> 0.4", only: :test},
+      {:ex_doc, "~> 0.19", only: [:release, :dev]}
     ]
   end
 
@@ -83,7 +84,7 @@ defmodule Cldr.Calendars.Persian.MixProject do
     ]
   end
 
-  defp elixirc_paths(:test), do: ["lib", "test", "test/support"]
-  defp elixirc_paths(:dev), do: ["lib", "bench"]
+  defp elixirc_paths(:test), do: ["lib", "test", "dev", "test/support"]
+  defp elixirc_paths(:dev), do: ["lib", "dev", "bench"]
   defp elixirc_paths(_), do: ["lib"]
 end
