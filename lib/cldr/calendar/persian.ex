@@ -178,18 +178,32 @@ defmodule Cldr.Calendar.Persian do
     this_day - first_day + 1
   end
 
-  @doc """
-  Calculates the day of the week from the given `year`, `month`, and `day`.
-  It is an integer from 1 to 7, where 1 is Monday and 7 is Sunday.
-
-  """
-  @spec day_of_week(year, month, day) :: 1..7
-  @impl true
   @epoch_day_of_week 6
-  def day_of_week(year, month, day) do
-    days = date_to_iso_days(year, month, day)
-    days_after_saturday = rem(days, 7)
-    Cldr.Math.amod(days_after_saturday + @epoch_day_of_week, @days_in_week)
+
+  if Code.ensure_loaded?(Date) && function_exported?(Date, :day_of_week, 2) do
+    @last_day_of_week 5
+
+    @spec day_of_week(year, month, day, :default | atom()) ::
+        {Calendar.day_of_week(), first_day_of_week :: non_neg_integer(),
+          last_day_of_week :: non_neg_integer()}
+
+    @impl true
+    def day_of_week(year, month, day, :default) do
+      days = date_to_iso_days(year, month, day)
+      days_after_saturday = rem(days, 7)
+      day = Cldr.Math.amod(days_after_saturday + @epoch_day_of_week, @days_in_week)
+
+      {day, @epoch_day_of_week, @last_day_of_week}
+    end
+  else
+    @spec day_of_week(year, month, day) :: 1..7
+
+    @impl true
+    def day_of_week(year, month, day) do
+      days = date_to_iso_days(year, month, day)
+      days_after_saturday = rem(days, 7)
+      Cldr.Math.amod(days_after_saturday + @epoch_day_of_week, @days_in_week)
+    end
   end
 
   @doc """
