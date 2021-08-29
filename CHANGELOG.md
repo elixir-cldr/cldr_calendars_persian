@@ -1,6 +1,6 @@
 # Changelog
 
-## Cldr_Calendars_Persian v0.3.0
+## Cldr_Calendars_Persian v0.4.0
 
 This is the changelog for ex_cldr_calendars_persian v0.3.0 released on August 29th, 2021.  For older changelogs please consult the release tag on [GitHub](https://github.com/elixir-cldr/cldr_calendars_persian/tags)
 
@@ -8,11 +8,17 @@ This is the changelog for ex_cldr_calendars_persian v0.3.0 released on August 29
 
 ### Bug Fixes
 
-* Fix behaviour warnings on Elixir 1.12
-
 * Fix application name to be `cldr_calendars_persian`
 
 * Make dev deps optional
+
+## Cldr_Calendars_Persian v0.3.0
+
+This is the changelog for ex_cldr_calendars_persian v0.3.0 released on May 22nd, 2021.  For older changelogs please consult the release tag on [GitHub](https://github.com/elixir-cldr/cldr_calendars_persian/tags)
+
+### Bug Fixes
+
+* Remove warnings for Elixir 1.12
 
 ## Cldr_Calendars_Persian v0.2.0
 
