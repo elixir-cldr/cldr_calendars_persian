@@ -19,36 +19,6 @@ defmodule Cldr.Calendar.Persian do
     cldr_calendar_type: :persian
 
   @mean_tropical_year 365.24219
-  @months_with_30_days 7..11
-  @months_with_31_days 1..6
-
-  @doc """
-  Returns the number days in a given year.
-
-  """
-  @impl true
-  def days_in_year(year) do
-    if leap_year?(year), do: 366, else: 365
-  end
-
-  @doc """
-  Returns how many days there are in the given year-month.
-
-  """
-  @spec days_in_month(year, month) :: 29..31
-  @impl true
-
-  def days_in_month(year, 12) do
-    if leap_year?(year), do: 30, else: 29
-  end
-
-  def days_in_month(_year, month) when month in @months_with_30_days do
-    30
-  end
-
-  def days_in_month(_year, month) when month in @months_with_31_days do
-    31
-  end
 
   @doc """
   Returns if the given year is a leap year.
