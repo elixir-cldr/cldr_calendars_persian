@@ -29,7 +29,7 @@ defmodule Cldr.Calendar.Persian do
   days to determine if its a leap year.
 
   """
-  @spec leap_year?(year) :: boolean()
+  @spec leap_year?(Calendar.year) :: boolean()
   @impl true
   def leap_year?(year) do
     new_year = date_to_iso_days(year, 1, 1)
