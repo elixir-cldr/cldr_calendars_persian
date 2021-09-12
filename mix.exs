@@ -1,11 +1,11 @@
 defmodule Cldr.Calendars.Persian.MixProject do
   use Mix.Project
 
-  @version "0.3.0"
+  @version "1.0.0-dev"
 
   def project do
     [
-      app: :cldr_calendars_persian,
+      app: :ex_cldr_calendars_persian,
       version: @version,
       elixir: "~> 1.10",
       start_permanent: Mix.env() == :prod,
@@ -52,7 +52,8 @@ defmodule Cldr.Calendars.Persian.MixProject do
 
   defp deps do
     [
-      {:ex_cldr_calendars, "~> 1.6"},
+      # {:ex_cldr_calendars, "~> 1.17"},
+      {:ex_cldr_calendars, path: "../cldr_calendars", override: true},
       {:astro, "~> 0.3"},
       {:stream_data, "~> 0.4", only: :test, optional: true},
       {:ex_doc, "~> 0.19", only: [:release, :dev], runtime: false, optional: true}
