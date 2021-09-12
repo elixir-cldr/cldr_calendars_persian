@@ -18,47 +18,9 @@ defmodule Cldr.Calendar.Persian do
     epoch: ~D[0622-03-20 Cldr.Calendar.Julian],
     cldr_calendar_type: :persian
 
-  @months_in_year 12
   @mean_tropical_year 365.24219
-
-  @doc """
-  Determines if the date given is valid according to
-  this calendar.
-
-  """
-  @impl true
   @months_with_30_days 7..11
-  def valid_date?(_year, month, day) when month in @months_with_30_days and day in 1..30 do
-    true
-  end
-
   @months_with_31_days 1..6
-  def valid_date?(_year, month, day) when month in @months_with_31_days and day in 1..31 do
-    true
-  end
-
-  def valid_date?(year, 12, 30) do
-    if leap_year?(year), do: true, else: false
-  end
-
-  def valid_date?(_year, 12, day) when day in 1..29 do
-    true
-  end
-
-  def valid_date?(_year, _month, _day) do
-    false
-  end
-
-  @doc """
-  Calculates the number of period in a given `year`. A period
-  corresponds to a month in month-based calendars and
-  a week in week-based calendars..
-
-  """
-  @impl true
-  def periods_in_year(_year) do
-    @months_in_year
-  end
 
   @doc """
   Returns the number days in a given year.

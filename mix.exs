@@ -54,7 +54,7 @@ defmodule Cldr.Calendars.Persian.MixProject do
     [
       # {:ex_cldr_calendars, "~> 1.17"},
       {:ex_cldr_calendars, path: "../cldr_calendars", override: true},
-      {:astro, "~> 0.3"},
+      {:astro, "~> 0.7"},
       {:stream_data, "~> 0.4", only: :test, optional: true},
       {:ex_doc, "~> 0.19", only: [:release, :dev], runtime: false, optional: true}
     ]
