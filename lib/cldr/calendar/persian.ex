@@ -38,6 +38,36 @@ defmodule Cldr.Calendar.Persian do
   end
 
   @doc """
+  Returns the number of days since the calendar
+  epoch for a given `year-month-day`
+
+  """
+  def date_to_iso_days(year, month, day) do
+    new_year =
+      new_year_on_or_before(epoch() + 180 +
+        :math.floor(@mean_tropical_year * if(0 < year, do: year - 1, else: year)) |> trunc)
+    new_year - 1 + if(month <= 7, do: 31 * (month - 1), else: 30 * (month - 1) + 6) + day
+  end
+
+  @doc """
+  Returns a `{year, month, day}` calculated from
+  the number of `iso_days`.
+
+  """
+  def date_from_iso_days(iso_days) do
+    new_year_iso_days = new_year_on_or_before(iso_days)
+    y = round((new_year_iso_days - epoch()) / @mean_tropical_year) + 1
+    year = if y > 0, do: y, else: y - 1
+    day_of_year = 1 + iso_days - date_to_iso_days(year, 1, 1)
+
+    month = if day_of_year <= 186, do: ceil(day_of_year / 31),
+             else: :math.ceil((day_of_year - 6) / 30)
+
+    day = iso_days - date_to_iso_days(year, month, 1) + 1
+    {year, trunc(month), trunc(day)}
+  end
+
+  @doc """
   Returns the Gregorian date of the
   Persian new year for a given
   Gregorian year
@@ -71,36 +101,6 @@ defmodule Cldr.Calendar.Persian do
 
   defp vernal_equinox(year) do
     Astro.equinox(year, :march)
-  end
-
-  @doc """
-  Returns the number of days since the calendar
-  epoch for a given `year-month-day`
-
-  """
-  def date_to_iso_days(year, month, day) do
-    new_year =
-      new_year_on_or_before(epoch() + 180 +
-        :math.floor(@mean_tropical_year * if(0 < year, do: year - 1, else: year)) |> trunc)
-    new_year - 1 + if(month <= 7, do: 31 * (month - 1), else: 30 * (month - 1) + 6) + day
-  end
-
-  @doc """
-  Returns a `{year, month, day}` calculated from
-  the number of `iso_days`.
-
-  """
-  def date_from_iso_days(iso_days) do
-    new_year_iso_days = new_year_on_or_before(iso_days)
-    y = round((new_year_iso_days - epoch()) / @mean_tropical_year) + 1
-    year = if y > 0, do: y, else: y - 1
-    day_of_year = 1 + iso_days - date_to_iso_days(year, 1, 1)
-
-    month = if day_of_year <= 186, do: ceil(day_of_year / 31),
-             else: :math.ceil((day_of_year - 6) / 30)
-
-    day = iso_days - date_to_iso_days(year, month, 1) + 1
-    {year, trunc(month), trunc(day)}
   end
 
   def new_year_on_or_before(iso_days) when is_integer(iso_days) do
