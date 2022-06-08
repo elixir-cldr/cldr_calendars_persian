@@ -1,7 +1,7 @@
 defmodule Cldr.Calendars.Persian.MixProject do
   use Mix.Project
 
-  @version "0.3.0"
+  @version "0.4.0"
 
   def project do
     [
@@ -52,7 +52,7 @@ defmodule Cldr.Calendars.Persian.MixProject do
 
   defp deps do
     [
-      {:ex_cldr_calendars, "~> 1.6"},
+      {:ex_cldr_calendars, "~> 1.8"},
       {:astro, "~> 0.3"},
       {:stream_data, "~> 0.4", only: :test, optional: true},
       {:ex_doc, "~> 0.19", only: [:release, :dev], runtime: false, optional: true}

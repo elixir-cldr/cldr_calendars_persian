@@ -89,13 +89,64 @@ defmodule Cldr.Calendar.Persian do
 
   """
   @spec year_of_era(year) :: {year, era :: 0..1}
-  @impl true
   def year_of_era(year) when year > 0 do
     {year, 1}
   end
 
   def year_of_era(year) when year < 0 do
     {abs(year), 0}
+  end
+
+  @spec year_of_era(year, month, day) :: {year, era :: 0..1}
+  @impl Calendar
+  def year_of_era(year, _month, _day) do
+    year_of_era(year)
+  end
+
+  @doc """
+  Returns the calendar year as displayed
+  on rendered calendars.
+
+  """
+  @spec calendar_year(year, month, day) :: Calendar.year()
+  @impl Cldr.Calendar
+  def calendar_year(year, _month, _day) do
+    year
+  end
+
+  @doc """
+  Returns the related gregorain year as displayed
+  on rendered calendars.
+
+  """
+  @spec related_gregorian_year(year, month, day) :: Calendar.year()
+  @impl Cldr.Calendar
+  def related_gregorian_year(year, _month, _day) do
+    iso_days = date_to_iso_days(year, 1, 1)
+    {year, _month, _day} =  Cldr.Calendar.Gregorian.date_from_iso_days(iso_days)
+    year
+  end
+
+  @doc """
+  Returns the extended year as displayed
+  on rendered calendars.
+
+  """
+  @spec extended_year(year, month, day) :: Calendar.year()
+  @impl Cldr.Calendar
+  def extended_year(year, _month, _day) do
+    year
+  end
+
+  @doc """
+  Returns the cyclic year as displayed
+  on rendered calendars.
+
+  """
+  @spec cyclic_year(year, month, day) :: Calendar.year()
+  @impl Cldr.Calendar
+  def cyclic_year(year, _month, _day) do
+    year
   end
 
   @doc """
