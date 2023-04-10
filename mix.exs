@@ -5,7 +5,7 @@ defmodule Cldr.Calendars.Persian.MixProject do
 
   def project do
     [
-      app: :cldr_calendars_persian,
+      app: :ex_cldr_calendars_persian,
       version: @version,
       elixir: "~> 1.10",
       start_permanent: Mix.env() == :prod,
