@@ -302,6 +302,20 @@ defmodule Cldr.Calendar.Persian do
   end
 
   @doc """
+  Returns how many days there are in the given month.
+
+  Must be implemented in derived calendars because
+  we cannot know what the calendar format is.
+
+  """
+  @spec days_in_month(Calendar.month) :: Calendar.month() | {:ambiguous, Range.t() | [pos_integer()]} | {:error, :undefined}
+  @impl true
+
+  def days_in_month(_month) do
+    {:error, :undefined}
+  end
+
+  @doc """
   Returns the number days in a a week.
 
   """

@@ -4,5 +4,5 @@ defmodule MyApp.Cldr do
   use Cldr,
     locales: ["fa", "fr", "en", "de"],
     default_locale: "en",
-    providers: [Cldr.Calendar]
+    providers: [Cldr.Calendar, Cldr.Number]
 end
