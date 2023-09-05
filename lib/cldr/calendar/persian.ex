@@ -590,6 +590,16 @@ defmodule Cldr.Calendar.Persian do
   @impl Calendar
   defdelegate date_to_string(year, month, day), to: Calendar.ISO
 
+  if Code.ensure_loaded?(Calendar.ISO) && function_exported?(Calendar.ISO, :iso_days_to_beginning_of_day, 1) do
+    @doc false
+    @impl Calendar
+    defdelegate iso_days_to_beginning_of_day(iso_days), to: Calendar.ISO
+
+    @doc false
+    @impl Calendar
+    defdelegate iso_days_to_end_of_day(iso_days), to: Calendar.ISO
+  end
+
   @doc false
   @impl Calendar
   defdelegate datetime_to_string(
