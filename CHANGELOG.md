@@ -2,6 +2,14 @@
 
 **Note that ex_cldr_calendars_persian is now supported on Elixir 1.12 and later**
 
+## Cldr_Calendars_Persian v1.1.0
+
+This is the changelog for ex_cldr_calendars_persian v1.1.01 released on July 6th, 2024.  For older changelogs please consult the release tag on [GitHub](https://github.com/elixir-cldr/cldr_calendars_persian/tags)
+
+### Enhancements
+
+* Re-implemented `Cldr.Calendar.Persian` using `use Cldr.Calendar.Behaviour`. The code is easier to understand and, as a byproduct, any new callbacks are generally automatically taken care of.
+
 ## Cldr_Calendars_Persian v1.0.1
 
 This is the changelog for ex_cldr_calendars_persian v1.0.1 released on September 9th, 2023.  For older changelogs please consult the release tag on [GitHub](https://github.com/elixir-cldr/cldr_calendars_persian/tags)
