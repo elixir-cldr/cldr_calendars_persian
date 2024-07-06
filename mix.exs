@@ -53,8 +53,8 @@ defmodule Cldr.Calendars.Persian.MixProject do
   defp deps do
     [
       {:ex_cldr_calendars, "~> 1.22"},
-      {:astro, "~> 0.3"},
-      {:stream_data, "~> 0.4", only: :test, optional: true},
+      {:astro, "~> 1.0"},
+      {:stream_data, "~> 1.0", only: :test, optional: true},
       {:ex_doc, "~> 0.19", only: [:release, :dev], runtime: false, optional: true}
     ]
   end
